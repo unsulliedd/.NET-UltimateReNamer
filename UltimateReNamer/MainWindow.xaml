@@ -5,8 +5,64 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:UltimateReNamer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Height="650" Width="1200"
+        Background="#252525"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip">
+
     <Grid>
+        <!--Title Bar-->
+        <Border Grid.ColumnSpan="3" Padding="8,4,8,4"
+                Background="#121212">
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="Ultimate ReNamer" VerticalAlignment="Center"
+                       Padding="5,3,0,0"
+                       Foreground="AliceBlue"
+                       FontWeight="SemiBold"
+                       FontFamily="./Style/Fonts/#Source Code Pro Medium">
+                </Label>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Content="🗕"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="Gray" FontWeight="SemiBold"
+                        Padding ="0,0,0,2">
+                    </Button>
+                    <Button Content="🗖"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="Gray" FontWeight="SemiBold"
+                        Padding ="0,0,0,3">
+                    </Button>
+                    <Button Content="✕"
+                        Width="30" Height="30"
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Foreground="Gray" FontWeight="SemiBold">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <!--Title Bar-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="220">
+
+            </ColumnDefinition>
+            <ColumnDefinition Width="420">
+
+            </ColumnDefinition>
+            <ColumnDefinition>
+
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
 
     </Grid>
 </Window>
