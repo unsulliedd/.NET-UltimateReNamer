@@ -9,11 +9,20 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Style\Fonts\SourceCodePro-Medium.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="MVVM\Model\" />
     <Folder Include="MVVM\ViewModel\" />
     <Folder Include="MVVM\View\" />
     <Folder Include="Core\" />
-    <Folder Include="Style\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Style\Fonts\SourceCodePro-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
