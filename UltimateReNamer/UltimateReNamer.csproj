@@ -9,18 +9,35 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Style\Fonts\SourceCodePro-Medium.ttf" />
+    <None Remove="Resource\Fonts\SourceCodePro-Medium.ttf" />
+    <None Remove="Resource\Icons\archive-fill.png" />
+    <None Remove="Resource\Icons\file-fill.png" />
+    <None Remove="Resource\Icons\home-fill.png" />
+    <None Remove="Resource\Icons\image-fill.png" />
+    <None Remove="Resource\Icons\mv-fill.png" />
+    <None Remove="Resource\Icons\video-fill.png" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="MVVM\Model\" />
-    <Folder Include="MVVM\ViewModel\" />
-    <Folder Include="MVVM\View\" />
-    <Folder Include="Core\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Resource Include="Style\Fonts\SourceCodePro-Medium.ttf">
+    <Resource Include="Resource\Fonts\SourceCodePro-Medium.ttf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\archive-fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\file-fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\home-fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\image-fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\mv-fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\video-fill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
