@@ -45,5 +45,10 @@ namespace UltimateReNamer
             Application.Current.Shutdown();
         }
         #endregion
+
+        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
