@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Style/MaterialColorPalette.xaml"/>
                 <ResourceDictionary Source="./Style/ScrollBar.xaml"/>
+                <ResourceDictionary Source="./Core/DataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
