@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="UltimateReNamer.MVVM.View.Partials.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:UltimateReNamer.MVVM.View.Partials" 
+             xmlns:Core="clr-namespace:UltimateReNamer.Core"
+             mc:Ignorable="d" >
+    <!-- Menu -->
+    <Grid>
+        <!-- Menu Rows -->
+        <Grid.RowDefinitions>
+            <!-- Title -->
+            <RowDefinition Height="50"/>
+            <!-- Content -->
+            <RowDefinition Height="*"/>
+            <!-- Footer -->
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu Title -->
+        <Label Content="Categories" 
+           Grid.Row="0" Margin="10,10,10,0" 
+           FontSize="20" FontWeight="Bold"
+           Foreground="{StaticResource TextBrush}"/>
+
+        <!-- Menu Content (Category List) -->
+        <StackPanel Grid.Row="1">
+            <!-- Home Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding HomeCommand}"          
+                IsChecked="True" Margin="10">
+                <Grid>
+                    <Image Source="/Resource/Icons/home-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Home"
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+            <!-- Document Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding DocumentCommand}"        
+                IsChecked="False" Margin="10">
+                <Grid>
+                    <Image Source="/Resource/Icons/file-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Document" 
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+            <!-- Image Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding PhotoCommand}"
+                IsChecked="False" Margin="10">
+                <Grid>
+                    <Image Source="/Resource/Icons/image-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Images" 
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+            <!-- Music Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding MusicCommand}"
+                IsChecked="False" Margin="10">
+                <Grid>
+                    <Image Source="/Resource/Icons/mv-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Music" 
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+            <!-- Video Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding VideoCommand}"
+                IsChecked="False" Margin="10">
+                <Grid>
+                    <Image Source="/Resource/Icons/video-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Videos" 
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+            <!-- Other Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding OtherCommand}"
+                IsChecked="False" Margin="10">
+                <Grid>
+                    <Image Source="/Resource/Icons/archive-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Other" 
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+            <!-- Settings Button -->
+            <Core:Btn Style="{StaticResource MenuBtnStyle}" Command="{Binding SettingCommand}"      
+                IsChecked="False" Margin="10 200 10 0">
+                <Grid>
+                    <Image Source="/Resource/Icons/settings-fill.png" 
+                    Style="{StaticResource MenuIconStyle}"/>
+                    <TextBlock Text="Settings"
+                    Style="{StaticResource MenuText}"/>
+                </Grid>
+            </Core:Btn>
+        </StackPanel>
+
+        <!-- Menu Footer -->
+        <StackPanel Grid.Row="2">
+            <!-- Info -->
+            <TextBlock Text="Bitcoin Address: YourBitcoinAddress"
+                   HorizontalAlignment="Center"
+                   Margin="10" Foreground="White"
+                   FontWeight="SemiBold" FontSize="8"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
