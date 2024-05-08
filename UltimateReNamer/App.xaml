@@ -10,6 +10,7 @@
                 <ResourceDictionary Source="./Style/Menu/MenuButtonText.xaml"/>
                 <ResourceDictionary Source="./Style/Menu/MenuButtonIcon.xaml"/>
                 <ResourceDictionary Source="./Style/Menu/MenuButton.xaml"/>
+                <ResourceDictionary Source="./Style/Main/GridSplitter.xaml"/>
                 <ResourceDictionary Source="./Style/ScrollBar.xaml"/>
                 <ResourceDictionary Source="./Core/DataTemplate.xaml"/>
             </ResourceDictionary.MergedDictionaries>

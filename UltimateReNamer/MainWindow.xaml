@@ -3,210 +3,162 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:vm="clr-namespace:UltimateReNamer.MVVM.ViewModel"
-        xmlns:viewmodel="clr-namespace:UltimateReNamer.MVVM.ViewModel"
-        xmlns:Menu="clr-namespace:UltimateReNamer.Core"
+        xmlns:vm="clr-namespace:UltimateReNamer.MVVM.ViewModel" 
+        xmlns:Partials="clr-namespace:UltimateReNamer.MVVM.View.Partials" 
         mc:Ignorable="d"
-        Height="675" Width="1200"
-        Background="#252525"
-        WindowStyle="None"
-        AllowsTransparency="True"
-        ResizeMode="CanResizeWithGrip">
+        Height="720" Width="1400" Background="#252525"
+        WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip">
 
-    <!-- Set MainWindowViewModel as the DataContext -->
+    <!-- Window DataContext -->
     <Window.DataContext>
         <vm:CategorySelectViewModel/>
     </Window.DataContext>
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <!-- Title Bar -->
-                <RowDefinition Height="35"/>
-                <!-- Content -->
-                <RowDefinition/>
-            </Grid.RowDefinitions>
+    <!-- Window Grid -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <!-- Title Bar -->
+            <RowDefinition Height="35"/>
+            <!-- Content -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
 
-            <!--Title Bar-->
-            <Border Grid.Row="0" Padding="8,4,8,4"
+        <!-- Title Bar -->
+        <Border Grid.Row="0" Padding="8,4,8,4"
                 Background="#121212"
                 MouseDown="Border_MouseDown">
-                <!-- Title Bar Content -->
-                <Grid HorizontalAlignment="Stretch">
-                    <Label Content="Ultimate ReNamer" VerticalAlignment="Center"
+            <!-- Title Bar Content -->
+            <Grid HorizontalAlignment="Stretch">
+                <Label Content="Ultimate ReNamer" VerticalAlignment="Center"
                        Padding="5,8,0,0"
                        Foreground="AliceBlue"
                        FontWeight="SemiBold"
                        FontFamily="./Styles/Fonts/#Source Code Pro Medium">
-                    </Label>
-                    <!-- Title Bar Buttons -->
-                    <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                        <Button Content="🗕"
+                </Label>
+                <!-- Title Bar Buttons -->
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                    <Button Content="🗕"
                             Width="30" Height="30"
                             Background="Transparent"
                             BorderThickness="0"
                             Foreground="Gray" FontWeight="SemiBold"
                             Padding ="0,0,0,2"
                             Click="MinimizeButton_Click">
-                        </Button>
-                        <Button Content="🗖"
+                    </Button>
+                    <Button Content="🗖"
                             Width="30" Height="30"
                             Background="Transparent"
                             BorderThickness="0"
                             Foreground="Gray" FontWeight="SemiBold"
                             Padding ="0,0,0,3"
                             Click="WindowStateButton_Click">
-                        </Button>
-                        <Button Content="✕"
+                    </Button>
+                    <Button Content="✕"
                             Width="30" Height="30"
                             Background="Transparent"
                             BorderThickness="0"
                             Foreground="Gray" FontWeight="SemiBold"
                             Click="CloseButton_Click">
-                        </Button>
-                    </StackPanel>
-                </Grid>
-            </Border>
-            <ScrollViewer Grid.Row="1" Style="{StaticResource ModernScrollBarStyle}">       
-                <!--Main Content-->
-                <Grid Grid.Row="1" Background="#171717">
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Content -->
+        <ScrollViewer Grid.Row="1" Style="{StaticResource ModernScrollBarStyle}">
+            <!-- Main Grid -->
+            <Grid Background="{StaticResource BackgroundDarkBrush}">
+                <!-- Main Content Grid Columns -->
+                <Grid.ColumnDefinitions>
+                    <!-- Menu Pane -->
+                    <ColumnDefinition Width="auto" MinWidth="160" MaxWidth="260"/>
+                    <ColumnDefinition Width="2"/>
+                    <!-- Main Pane -->
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Grid Splitter -->
+                <GridSplitter Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                    Width="2" Margin="0 20" Background="Gray" ResizeBehavior="PreviousAndNext"/>
+                
+                <!-- Menu -->
+                <ContentControl Grid.Column="0">
+                    <Partials:Menu/>
+                </ContentControl>
+
+                <!-- Main Pane -->
+                <Grid Grid.Column="2">
                     <Grid.ColumnDefinitions>
-                        <!-- Left Menu -->
-                        <ColumnDefinition Width="200"/>
-                        <!-- Main Content -->
-                        <ColumnDefinition Width="420"/>
+                        <!-- Main Pane -->
+                        <ColumnDefinition Width="600" MinWidth="300" MaxWidth="1000"/>
+                        <ColumnDefinition Width="2"/>
                         <!-- Right Pane -->
-                        <ColumnDefinition Width="580"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
+                    
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="40"/>
+                    </Grid.RowDefinitions>
 
-                    <!-- Left Menu -->
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <!-- Title -->
-                            <RowDefinition Height="50"/>
-                            <!-- Content -->
-                            <RowDefinition Height="*"/>
-                            <!-- Footer -->
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
+                    <!-- Undivided Pane -->
+                    <!-- Home & Settings -->
+                    <ContentControl Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="3" Content="{Binding CurrentView}">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ShowUndividedPane}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                
+                    <!-- Divided Pane -->
+                    <!-- Main Pane -->
+                    <ContentControl Grid.Column="0" Grid.Row="0">
+                        <Partials:MainPane/>
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ShowDividedPane}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                    
+                    <!-- GridSplitter -->
+                    <GridSplitter Grid.Column="1" Grid.Row="0" Style="{StaticResource MainGridSplitterStyle}"/>
 
-                        <!-- Left Menu Title -->
-                        <Label Content="File Categories" 
-                           Grid.Row="0"
-                           Margin="15,10,0,0"
-                           FontSize="20"
-                           Foreground="{StaticResource TextBrush}"
-                           FontWeight="Bold"/>
-
-                        <!-- Left Menu Content (Category List) -->
-                        <StackPanel Grid.Row="1">
-                            <!--Home Button-->
-                            <Menu:Btn Style="{StaticResource MenuBtnStyle}" 
-                                      Command="{Binding HomeCommand}"
-                                      IsChecked="True"
-                                      Margin="10">
-                                <Grid>
-                                    <Image Source="/Resource/Icons/home-fill.png" 
-                                        Style="{StaticResource MenuIconStyle}"/>
-                                    <TextBlock Text="Home"
-                                        Style="{StaticResource MenuText}"/>
-                                </Grid>
-                            </Menu:Btn>
-                            <!--Document Button-->
-                            <Menu:Btn Style="{StaticResource MenuBtnStyle}" 
-                                      Command="{Binding DocumentCommand}"
-                                      IsChecked="False"
-                                      Margin="0,10">
-                                <Grid>
-                                    <Image Source="/Resource/Icons/file-fill.png" 
-                                        Style="{StaticResource MenuIconStyle}"/>
-                                    <TextBlock Text="Document" 
-                                        Style="{StaticResource MenuText}"/>
-                                </Grid>
-                            </Menu:Btn>
-                            <!--Image Button-->
-                            <Menu:Btn Style="{StaticResource MenuBtnStyle}" 
-                                      Command="{Binding PhotoCommand}"
-                                      IsChecked="False"
-                                      Margin="0,10">
-                                <Grid>
-                                    <Image Source="/Resource/Icons/image-fill.png" 
-                                        Style="{StaticResource MenuIconStyle}"/>
-                                    <TextBlock Text="Images" 
-                                        Style="{StaticResource MenuText}"/>
-                                </Grid>
-                            </Menu:Btn>
-                            <!--Music Button-->
-                            <Menu:Btn Style="{StaticResource MenuBtnStyle}" 
-                                      Command="{Binding MusicCommand}"
-                                      IsChecked="False"
-                                      Margin="0,10">
-                                <Grid>
-                                    <Image Source="/Resource/Icons/mv-fill.png" 
-                                    Style="{StaticResource MenuIconStyle}"/>
-                                    <TextBlock Text="Music" 
-                                    Style="{StaticResource MenuText}"/>
-                                </Grid>
-                            </Menu:Btn>
-                            <!--Video Button-->
-                            <Menu:Btn Style="{StaticResource MenuBtnStyle}" 
-                                  Command="{Binding VideoCommand}"
-                                  IsChecked="False"
-                                  Margin="0,10">
-                                <Grid>
-                                    <Image Source="/Resource/Icons/video-fill.png" 
-                                    Style="{StaticResource MenuIconStyle}"/>
-                                    <TextBlock Text="Videos" 
-                                    Style="{StaticResource MenuText}"/>
-                                </Grid>
-                            </Menu:Btn>
-                            <!--Other Button-->
-                            <Menu:Btn Style="{StaticResource MenuBtnStyle}" 
-                                  Command="{Binding OtherCommand}"
-                                  IsChecked="False"
-                                  Margin="0,10">
-                                <Grid>
-                                    <Image Source="/Resource/Icons/archive-fill.png" 
-                                    Style="{StaticResource MenuIconStyle}"/>
-                                    <TextBlock Text="Other" 
-                                    Style="{StaticResource MenuText}"/>
-                                </Grid>
-                            </Menu:Btn>
-                        </StackPanel>
-
-                        <!-- Left Menu Footer -->
-                        <StackPanel Grid.Row="2" Orientation="Vertical" HorizontalAlignment="Center"
-                                    Margin="0,0,0,10">
-                            <!-- Settings Button -->
-                            <Button Margin="5"
-                                Padding="10,5"
-                                Background="Transparent"
-                                FontWeight="SemiBold"
-                                Click="SettingsButton_Click">
-                                <StackPanel Orientation="Horizontal">
-                                    <Button Content="Settings" Command="{Binding SettingCommand}"
-                                        BorderThickness="0"
-                                        Background="Transparent"
-                                        Foreground="AliceBlue"/>
-                                </StackPanel>
-                            </Button>
-
-                            <TextBlock Text="Bitcoin Address: YourBitcoinAddress"
-                                   Margin="5"
-                                   Foreground="White"
-                                   FontWeight="SemiBold"
-                                   FontSize="8"/>
-                        </StackPanel>
-                        <!--Menu Border-->
-                        <Border Grid.RowSpan="3" Grid.Column="1" BorderThickness="0,0,1,0" BorderBrush="Gray"/>
-                    </Grid>
-                    <!--Middle Pane-->
-                    <Grid Grid.Row="2" Grid.Column="1">
-                    </Grid>
                     <!-- Right Pane -->
-                    <Grid Grid.Row="2" Grid.Column="2">
-                        <ContentControl Content="{Binding CurentView}"/>
+                    <ContentControl Grid.Column="2" Grid.Row="0" Content="{Binding CurrentView}">
+                        <ContentControl.Style>
+                            <Style TargetType="ContentControl">
+                                <Setter Property="Visibility" Value="Collapsed"/>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding ShowDividedPane}" Value="True">
+                                        <Setter Property="Visibility" Value="Visible"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ContentControl.Style>
+                    </ContentControl>
+                    
+                    <!-- Main Pane Footer -->
+                    <Grid Grid.Row="1" Grid.ColumnSpan="3" VerticalAlignment="Center">
+                        <TextBlock Text="© 2024 Ultimate ReNamer"
+                            HorizontalAlignment="Center"
+                            TextAlignment="Center"
+                            FontSize="12"
+                            Foreground="Gray"/>
                     </Grid>
                 </Grid>
-            </ScrollViewer>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </Window>

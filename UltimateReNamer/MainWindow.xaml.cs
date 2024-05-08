@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using UltimateReNamer.MVVM.Model;
 
 namespace UltimateReNamer
 {
@@ -45,10 +46,5 @@ namespace UltimateReNamer
             Application.Current.Shutdown();
         }
         #endregion
-
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
     }
 }
