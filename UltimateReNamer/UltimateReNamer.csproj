@@ -15,6 +15,7 @@
     <None Remove="Resource\Icons\home-fill.png" />
     <None Remove="Resource\Icons\image-fill.png" />
     <None Remove="Resource\Icons\mv-fill.png" />
+    <None Remove="Resource\Icons\settings-fill.png" />
     <None Remove="Resource\Icons\video-fill.png" />
   </ItemGroup>
 
@@ -35,6 +36,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\Icons\mv-fill.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\Icons\settings-fill.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\Icons\video-fill.png">
