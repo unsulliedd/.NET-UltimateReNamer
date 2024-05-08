@@ -1,15 +1,31 @@
 ﻿using UltimateReNamer.Core;
 using System.Windows.Input;
+using UltimateReNamer.Core.Interfaces;
+
 
 namespace UltimateReNamer.MVVM.ViewModel
 {
     public class CategorySelectViewModel : ObservableObject
     {
-        private object _curentView;
-        public object CurentView
+        private IContentViewModel _currentView;
+        public IContentViewModel CurrentView
         {
-            get { return _curentView; }
-            set { _curentView = value; OnPropertyChanged(); }
+            get { return _currentView; }
+            set { _currentView = value; OnPropertyChanged(); }
+        }
+
+        private bool _showUndividedPane;
+        public bool ShowUndividedPane
+        {
+            get { return _showUndividedPane; }
+            set { _showUndividedPane = value; OnPropertyChanged(); if(value) ShowDividedPane = false; }
+        }
+
+        private bool _showDividedPane;
+        public bool ShowDividedPane
+        {
+            get { return _showDividedPane; }
+            set { _showDividedPane = value; OnPropertyChanged(); if (value) ShowUndividedPane = false; }
         }
 
         public ICommand HomeCommand { get; set; }
@@ -20,16 +36,53 @@ namespace UltimateReNamer.MVVM.ViewModel
         public ICommand OtherCommand { get; set; }
         public ICommand SettingCommand { get; set; }
 
-        private void Home(object obj) => CurentView = new MainWindowViewModel();
-        private void Document(object obj) => CurentView = new DocumentViewModel();
-        private void Photo(object obj) => CurentView = new PhotoViewModel();
-        private void Music(object obj) => CurentView = new MusicViewModel();
-        private void Video(object obj) => CurentView = new VideoViewModel();
-        private void Other(object obj) => CurentView = new OtherViewModel();
-        private void Setting(object obj) => CurentView = new SettingsViewModel();
+        private void Home(object obj)
+        {
+            CurrentView = new MainWindowViewModel();
+            ShowUndividedPane = true;
+        }
+
+        private void Document(object obj)
+        {
+            CurrentView = new DocumentViewModel();
+            ShowDividedPane = true;
+        }
+
+        private void Photo(object obj)
+        {
+            CurrentView = new PhotoViewModel();
+            ShowDividedPane = true;
+        }
+
+        private void Music(object obj)
+        {
+            CurrentView = new MusicViewModel();
+            ShowDividedPane = true;
+        }
+
+        private void Video(object obj)
+        {
+            CurrentView = new VideoViewModel();
+            ShowDividedPane = true;
+        }
+
+        private void Other(object obj)
+        {
+            CurrentView = new OtherViewModel();
+            ShowDividedPane = true;
+        }
+
+        private void Setting(object obj)
+        {
+            CurrentView = new SettingsViewModel();
+            ShowUndividedPane = true;
+        }
 
         public CategorySelectViewModel()
         {
+            ShowUndividedPane = true;
+            CurrentView = new MainWindowViewModel();
+
             HomeCommand = new RelayCommand(Home);
             DocumentCommand = new RelayCommand(Document);
             PhotoCommand = new RelayCommand(Photo);
@@ -37,8 +90,6 @@ namespace UltimateReNamer.MVVM.ViewModel
             VideoCommand = new RelayCommand(Video);
             OtherCommand = new RelayCommand(Other);
             SettingCommand = new RelayCommand(Setting);
-
-            CurentView = new MainWindowViewModel();
         }
     }
 }

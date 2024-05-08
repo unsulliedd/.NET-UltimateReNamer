@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace UltimateReNamer.MVVM.ViewModel
+﻿namespace UltimateReNamer.MVVM.ViewModel
 {
-    public class MusicViewModel
+    public class MusicViewModel : BaseFileRenamingViewModel
     {
     }
 }

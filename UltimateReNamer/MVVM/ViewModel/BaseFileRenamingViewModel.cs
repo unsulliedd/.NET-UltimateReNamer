@@ -2,8 +2,7 @@
 
 namespace UltimateReNamer.MVVM.ViewModel
 {
-    public class MainWindowViewModel : IContentViewModel
+    public class BaseFileRenamingViewModel : IContentViewModel
     {
-        
     }
 }
