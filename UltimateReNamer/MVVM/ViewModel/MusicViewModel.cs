@@ -2,5 +2,8 @@
 {
     public class MusicViewModel : BaseFileRenamingViewModel
     {
+        public MusicViewModel() : base("Musics")
+        {
+        }
     }
 }

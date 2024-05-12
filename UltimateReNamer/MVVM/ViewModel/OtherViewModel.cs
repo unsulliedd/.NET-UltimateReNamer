@@ -2,5 +2,8 @@
 {
     public class OtherViewModel : BaseFileRenamingViewModel
     {
+        public OtherViewModel() : base("Others")
+        {
+        }
     }
 }

@@ -2,5 +2,8 @@
 {
     public class PhotoViewModel : BaseFileRenamingViewModel
     {
+        public PhotoViewModel() : base("Photos")
+        {
+        }
     }
 }
